@@ -57,10 +57,37 @@
  * テンプレート文字列
  */
 
-const name = "anna";
-const age = 28;
+// const name = "anna";
+// const age = 28;
 
-console.log("私の名前は" + name + "です。年齢は" + age + "です。");
-console.log(`私の名前は${name}です。年齢は${age}です。`);
+// console.log("私の名前は" + name + "です。年齢は" + age + "です。");
+// console.log(`私の名前は${name}です。年齢は${age}です。`);
 
 // バッククォートを使うと文字列に変数を入れ込むような者が見やすくなる。
+
+/**
+ * アロー関数
+ */
+// 従来の書き方
+function func1(str) {
+  return str;
+}
+console.log(func1("hello"));
+
+const func2 = function (str) {
+  return str;
+};
+
+console.log(func2("ciao"));
+
+//  アロー関数
+const func3 = (str) => {
+  return str;
+};
+
+console.log(func3("こんにちは"));
+
+// アロー関数は、処理が1行の場合は、return不要、また{}も不要
+
+const func4 = (num1, num2) => num1 + num2;
+console.log(func4(10, 20));
