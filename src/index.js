@@ -238,19 +238,44 @@
  * 三項演算子
  */
 // ある条件?　条件がtrueの時：条件がfalseの時
-const val1 = 1 > 0 ? "true" : "false";
-console.log(val1);
-// 簡単なif,elseを1行で表せる
+// const val1 = 1 > 0 ? "true" : "false";
+// console.log(val1);
+// // 簡単なif,elseを1行で表せる
 
-const num = 1300;
-// console.log(num.toLocaleString()); //toLocaleStringをすることで、数値が来た時だけ1,300みたいにカンマで区切ってくれる
+// const num = 1300;
+// // console.log(num.toLocaleString()); //toLocaleStringをすることで、数値が来た時だけ1,300みたいにカンマで区切ってくれる
 
-const formattedNum =
-  typeof num === "number" ? num.toLocaleString() : "数値を入力して下さい";
-console.log(formattedNum);
+// const formattedNum =
+//   typeof num === "number" ? num.toLocaleString() : "数値を入力して下さい";
+// console.log(formattedNum);
 
-const checkSum = (num1, num2) => {
-  return num1 + num2 > 100 ? "100を超えています" : "100未満です";
-};
-console.log(checkSum(1, 3));
-console.log(checkSum(85, 19));
+// const checkSum = (num1, num2) => {
+//   return num1 + num2 > 100 ? "100を超えています" : "100未満です";
+// };
+// console.log(checkSum(1, 3));
+// console.log(checkSum(85, 19));
+
+/**
+ * 論理演算子の本当の意味…&& ||
+ */
+
+const flag1 = true;
+const flag2 = false;
+
+if (flag1 || flag2) {
+  console.log("1 or 2 is true");
+}
+if (flag1 && flag2) {
+  console.log("1 and 2 is true");
+}
+
+// or,andだと思われるが意外と違うらしい
+// ||は左側がfalseなら右側を返す、という意味
+const num = null;
+const fee = num || "金額未設定です";
+console.log(fee); // => 金額未設定です が返る。num = 1 など、false出ないものだったら、numの中身が返る
+
+// &&は　左側がtrueなら右側を返すという意味
+const num2 = 100;
+const fee2 = num2 && "何かが設定されました";
+console.log(fee2); // => 何かが設定されました　が返る。　num2がnull等、false判定の者だったら、num2の中身が返る
