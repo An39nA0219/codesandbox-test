@@ -152,44 +152,84 @@
  */
 
 //  配列の展開
-const arr1 = [1, 2];
-console.log(arr1);
-console.log(...arr1);
-// console.log(arr1); => [1, 2]だったのが
-// console.log(...arr1);　=>ただの1と2になる
+// const arr1 = [1, 2];
+// console.log(arr1);
+// console.log(...arr1);
+// // console.log(arr1); => [1, 2]だったのが
+// // console.log(...arr1);　=>ただの1と2になる
 
-const sum = (num1, num2) => {
-  console.log(num1 + num2);
-};
-sum(arr1[0], arr1[1]);
+// const sum = (num1, num2) => {
+//   console.log(num1 + num2);
+// };
+// sum(arr1[0], arr1[1]);
 
-// このようにarr1の中身を展開して合算したいときにはarr[0],arr[1]のように入れなければいけないが、
-// スプレッド構文を使うと簡単に展開ができる。
-sum(...arr1);
+// // このようにarr1の中身を展開して合算したいときにはarr[0],arr[1]のように入れなければいけないが、
+// // スプレッド構文を使うと簡単に展開ができる。
+// sum(...arr1);
 
-// 1つにまとめえるのもスプレッド構文で出来る
-const arr2 = [1, 2, 3, 4, 5];
-// 分割代入で配列を各変数に入れてみる処理
-const [num1, num2, ...num3] = arr2;
-console.log(num1);
-console.log(num2);
-console.log(num3); // => [3, 4, 5]
-// このように、...num3として分割代入すると、num1に入った1,num2に入った2以降のものが配列として入ってくれる。
+// // 1つにまとめえるのもスプレッド構文で出来る
+// const arr2 = [1, 2, 3, 4, 5];
+// // 分割代入で配列を各変数に入れてみる処理
+// const [num1, num2, ...num3] = arr2;
+// console.log(num1);
+// console.log(num2);
+// console.log(num3); // => [3, 4, 5]
+// // このように、...num3として分割代入すると、num1に入った1,num2に入った2以降のものが配列として入ってくれる。
 
-// 配列のコピーや結合等でも使える
-const arr3 = [10, 20];
-const arr4 = [30, 40];
+// // 配列のコピーや結合等でも使える
+// const arr3 = [10, 20];
+// const arr4 = [30, 40];
 
-const arr5 = [...arr3];
-console.log(arr5); //[10, 20]
-const arr6 = [...arr3, ...arr4];
-console.log(arr6); //[10, 20, 30, 40]
+// const arr5 = [...arr3];
+// console.log(arr5); //[10, 20]
+// const arr6 = [...arr3, ...arr4];
+// console.log(arr6); //[10, 20, 30, 40]
 
-// このようにするとarr3の中身だけをコピーできる。
-// なぜコピーするときにarr5 = arr3としないかというと、
-const arr7 = arr3;
-console.log(arr7); //[10, 20]
-//というようになるが、arr3とarr7のつながりを保ったままなので、arr7を変更すると、arr3まで変更されてしまう。
-arr7[0] = 37;
-console.log(arr7); //[37, 20]
-console.log(arr3); //[37, 20]
+// // このようにするとarr3の中身だけをコピーできる。
+// // なぜコピーするときにarr5 = arr3としないかというと、
+// const arr7 = arr3;
+// console.log(arr7); //[10, 20]
+// //というようになるが、arr3とarr7のつながりを保ったままなので、arr7を変更すると、arr3まで変更されてしまう。
+// arr7[0] = 37;
+// console.log(arr7); //[37, 20]
+// console.log(arr3); //[37, 20]
+
+/**
+ * map,filterの配列処理
+ */
+
+const arr1 = ["anna", "yuna", "reina"];
+
+for (let i = 0; i < arr1.length; i++) {
+  console.log(`${i + 1}番目は${arr1[i]}`);
+}
+
+//  mapを使った処理
+const arr2 = arr1.map((name, i) => {
+  return `${i + 1}番目は${name}`;
+});
+
+console.log(arr2);
+// mapは、ruby とかで言う所の、names.each do |name|{}みたいな感じで、
+// arr1をmapする、そこから1個ずつnameという疑似的な変数に代入する⇒変数で処理をする、みたいな感じで書ける。
+
+const arr3 = arr1.map((name, i) => {
+  console.log(`${i + 1}番目は${name}`);
+});
+
+const newNameArr = arr1.map((name) => {
+  if (name === "anna") {
+    return console.log(name);
+  } else {
+    return console.log(`${name}さん`);
+  }
+});
+
+// filter
+// ある条件に一致したものだけ取り出すような感じ
+const numArr = [1, 2, 3];
+const newNumArr = numArr.filter((num) => {
+  return num % 2 === 1;
+});
+
+console.log(newNumArr);
