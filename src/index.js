@@ -102,30 +102,47 @@
  */
 
 // 従来
-const myprofile = {
-  name: "uchida",
-  age: 29
+// const myprofile = {
+//   name: "uchida",
+//   age: 29
+// };
+
+// const message = `${myprofile.name}は${myprofile.age}歳です`;
+// console.log(message);
+
+// //  分割代入
+// // ↓は、myprofileのハッシュを順番に、name,ageという変数にそれぞれ入れてあげるということ
+// //  myprofileの中にはnameオブジェクトとageオブジェクトがある。
+// // nameはnameという変数に代入、ageはageという変数に台有することができるが、
+// // 例えば、nameをname1とかオブジェクト名と違う変数に入れようとするとエラーになる。
+// const { name, age } = myprofile;
+// const message1 = `${name}は${age}歳です`;
+// console.log(message1);
+
+// //  配列の分割代入
+// // 従来
+// const array = ["anna", "yuna", "reina"];
+// const message2 = `${array[0]}と${array[1]}と${array[2]}は兄弟です`;
+// console.log(message2);
+
+// //  分割代入。配列の場合は、前から順番にこちらで指定した変数に入っていく
+// const [name1, name2, name3] = array;
+// const message3 = `${name1}と${name2}と${name3}は兄弟です`;
+// console.log(message3);
+
+/**
+ * デフォルト値
+ */
+
+//  関数に対して、デフォルト値を決めて置ける。
+// 例えば変数の中身がundefinedだった時に、undefinedではなく、指定のデフォルト値を代わりに出すことができる。
+
+const sayHello = (name = "guest") => {
+  return `${name}さん、こんにちは～`;
 };
 
-const message = `${myprofile.name}は${myprofile.age}歳です`;
-console.log(message);
+console.log(sayHello("anna"));
 
-//  分割代入
-// ↓は、myprofileのハッシュを順番に、name,ageという変数にそれぞれ入れてあげるということ
-//  myprofileの中にはnameオブジェクトとageオブジェクトがある。
-// nameはnameという変数に代入、ageはageという変数に台有することができるが、
-// 例えば、nameをname1とかオブジェクト名と違う変数に入れようとするとエラーになる。
-const { name, age } = myprofile;
-const message1 = `${name}は${age}歳です`;
-console.log(message1);
+console.log(sayHello());
 
-//  配列の分割代入
-// 従来
-const array = ["anna", "yuna", "reina"];
-const message2 = `${array[0]}と${array[1]}と${array[2]}は兄弟です`;
-console.log(message2);
-
-//  分割代入。配列の場合は、前から順番にこちらで指定した変数に入っていく
-const [name1, name2, name3] = array;
-const message3 = `${name1}と${name2}と${name3}は兄弟です`;
-console.log(message3);
+// 上のように、name= "guest"と入れておけば、何も引数が入っていないときにguestが入る。
