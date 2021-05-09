@@ -198,38 +198,59 @@
  * map,filterの配列処理
  */
 
-const arr1 = ["anna", "yuna", "reina"];
+// const arr1 = ["anna", "yuna", "reina"];
 
-for (let i = 0; i < arr1.length; i++) {
-  console.log(`${i + 1}番目は${arr1[i]}`);
-}
+// for (let i = 0; i < arr1.length; i++) {
+//   console.log(`${i + 1}番目は${arr1[i]}`);
+// }
 
-//  mapを使った処理
-const arr2 = arr1.map((name, i) => {
-  return `${i + 1}番目は${name}`;
-});
+// //  mapを使った処理
+// const arr2 = arr1.map((name, i) => {
+//   return `${i + 1}番目は${name}`;
+// });
 
-console.log(arr2);
-// mapは、ruby とかで言う所の、names.each do |name|{}みたいな感じで、
-// arr1をmapする、そこから1個ずつnameという疑似的な変数に代入する⇒変数で処理をする、みたいな感じで書ける。
+// console.log(arr2);
+// // mapは、ruby とかで言う所の、names.each do |name|{}みたいな感じで、
+// // arr1をmapする、そこから1個ずつnameという疑似的な変数に代入する⇒変数で処理をする、みたいな感じで書ける。
 
-const arr3 = arr1.map((name, i) => {
-  console.log(`${i + 1}番目は${name}`);
-});
+// const arr3 = arr1.map((name, i) => {
+//   console.log(`${i + 1}番目は${name}`);
+// });
 
-const newNameArr = arr1.map((name) => {
-  if (name === "anna") {
-    return console.log(name);
-  } else {
-    return console.log(`${name}さん`);
-  }
-});
+// const newNameArr = arr1.map((name) => {
+//   if (name === "anna") {
+//     return console.log(name);
+//   } else {
+//     return console.log(`${name}さん`);
+//   }
+// });
 
-// filter
-// ある条件に一致したものだけ取り出すような感じ
-const numArr = [1, 2, 3];
-const newNumArr = numArr.filter((num) => {
-  return num % 2 === 1;
-});
+// // filter
+// // ある条件に一致したものだけ取り出すような感じ
+// const numArr = [1, 2, 3];
+// const newNumArr = numArr.filter((num) => {
+//   return num % 2 === 1;
+// });
 
-console.log(newNumArr);
+// console.log(newNumArr);
+
+/**
+ * 三項演算子
+ */
+// ある条件?　条件がtrueの時：条件がfalseの時
+const val1 = 1 > 0 ? "true" : "false";
+console.log(val1);
+// 簡単なif,elseを1行で表せる
+
+const num = 1300;
+// console.log(num.toLocaleString()); //toLocaleStringをすることで、数値が来た時だけ1,300みたいにカンマで区切ってくれる
+
+const formattedNum =
+  typeof num === "number" ? num.toLocaleString() : "数値を入力して下さい";
+console.log(formattedNum);
+
+const checkSum = (num1, num2) => {
+  return num1 + num2 > 100 ? "100を超えています" : "100未満です";
+};
+console.log(checkSum(1, 3));
+console.log(checkSum(85, 19));
