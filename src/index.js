@@ -137,12 +137,59 @@
 //  関数に対して、デフォルト値を決めて置ける。
 // 例えば変数の中身がundefinedだった時に、undefinedではなく、指定のデフォルト値を代わりに出すことができる。
 
-const sayHello = (name = "guest") => {
-  return `${name}さん、こんにちは～`;
+// const sayHello = (name = "guest") => {
+//   return `${name}さん、こんにちは～`;
+// };
+
+// console.log(sayHello("anna"));
+
+// console.log(sayHello());
+
+// // 上のように、name= "guest"と入れておけば、何も引数が入っていないときにguestが入る。
+
+/**
+ * スプレッド構文　...というように書く
+ */
+
+//  配列の展開
+const arr1 = [1, 2];
+console.log(arr1);
+console.log(...arr1);
+// console.log(arr1); => [1, 2]だったのが
+// console.log(...arr1);　=>ただの1と2になる
+
+const sum = (num1, num2) => {
+  console.log(num1 + num2);
 };
+sum(arr1[0], arr1[1]);
 
-console.log(sayHello("anna"));
+// このようにarr1の中身を展開して合算したいときにはarr[0],arr[1]のように入れなければいけないが、
+// スプレッド構文を使うと簡単に展開ができる。
+sum(...arr1);
 
-console.log(sayHello());
+// 1つにまとめえるのもスプレッド構文で出来る
+const arr2 = [1, 2, 3, 4, 5];
+// 分割代入で配列を各変数に入れてみる処理
+const [num1, num2, ...num3] = arr2;
+console.log(num1);
+console.log(num2);
+console.log(num3); // => [3, 4, 5]
+// このように、...num3として分割代入すると、num1に入った1,num2に入った2以降のものが配列として入ってくれる。
 
-// 上のように、name= "guest"と入れておけば、何も引数が入っていないときにguestが入る。
+// 配列のコピーや結合等でも使える
+const arr3 = [10, 20];
+const arr4 = [30, 40];
+
+const arr5 = [...arr3];
+console.log(arr5); //[10, 20]
+const arr6 = [...arr3, ...arr4];
+console.log(arr6); //[10, 20, 30, 40]
+
+// このようにするとarr3の中身だけをコピーできる。
+// なぜコピーするときにarr5 = arr3としないかというと、
+const arr7 = arr3;
+console.log(arr7); //[10, 20]
+//というようになるが、arr3とarr7のつながりを保ったままなので、arr7を変更すると、arr3まで変更されてしまう。
+arr7[0] = 37;
+console.log(arr7); //[37, 20]
+console.log(arr3); //[37, 20]
